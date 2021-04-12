@@ -47,9 +47,9 @@ export class BackgroundDataLoadersService {
     let jobs: BullJobInput[] = [];
     const jobCreationDateTime = new Date();
 
-    for (var dateChunk of dateChunks) {
+    for (let dateChunk of dateChunks) {
       console.log('===== date chunk =====')
-      for (var config of jobInput.config1) {
+      for (let config of jobInput.config1) {
         let jobData:fullInputData = { ...jobInput };
         jobData.start = jobCreationDateTime;
         jobData.startDate = dateChunk.startDate;
