@@ -28,8 +28,11 @@ $ npm run start:dev
 $ npm run start:prod
 
 # startup the docker images
+sudo docker-up # (if running in Gitpod + I think you also have to activate the root feature which is in preview before it will work https://www.gitpod.io/blog/root-docker-and-vscode)
 docker-compose -f docker-compose.dev.yml up -d
 ```
+
+If running in Gitpod you will also need to set port 3000 as public.
 
 ## Test
 
