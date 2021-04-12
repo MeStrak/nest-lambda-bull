@@ -1,0 +1,43 @@
+version: "3.7"
+services:
+  redis:
+    image: redis
+    hostname: redis
+    container_name: redis
+    ports:
+      - 6379:6379
+    volumes:
+      - redis:/var/lib/redis
+    networks: ["stack"]
+  arena:
+    image: mixmaxhq/arena
+    hostname: arena
+    container_name: arena
+    restart: always
+    ports:
+      - 4567:4567
+    volumes:
+      - ${PWD}/arena-dash/index.json:/opt/arena/index.json
+    networks: ["stack"]
+  bullboard:
+    hostname: bull-board
+    container_name: bull-board
+    image: deadly0/bull-board
+    restart: always
+    ports:
+      - 9000:3000
+    networks: ["stack"]
+    environment:
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      BULL_VERSION: BULL
+      USER_LOGIN: X
+      USER_PASSWORD: X
+    depends_on:
+      - redis
+networks:
+  stack:
+volumes:
+  redis:
+    external: false
+  bull-board:

@@ -1,0 +1,14 @@
+{
+    "queues": [
+    {
+      "name": "background-data",
+
+      "hostId": "x",
+
+      "redis": {
+        "port": 6379,
+        "host": "redis"
+      }
+    }
+  ]
+}
